@@ -1,0 +1,371 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+
+:root {
+	--darkgrey: #3b3b3b; /* background */
+	--lightgrey: #768c90; /* jar */
+	--lightestgrey: #dcdedf; /* lid */
+	--red: #c7535d; /* body */
+	--yellow: #fec14f; /* body */
+	--nearlyblack: #3b3b3b; /* wings, head */
+	--lightyellow: #ffeac4; /* glow */
+	--grey: #767676; /* wings. head. */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background: var(--darkgrey);
+	overflow-y: hidden;
+}
+
+.container {
+	position: relative;
+	width: 80vmin;
+	height: 80vmin;
+}
+
+.jar {
+	position: absolute;
+	width: 60vmin;
+	height: 50vmin;
+	background: var(--lightgrey);
+	border-bottom-left-radius: 10vmin;
+	border-bottom-right-radius: 10vmin;
+	top: 30vmin;
+	left: 10vmin;
+}
+
+.jar:before {
+	position: absolute;
+	content: "";
+	border-radius: 25% 75% 0% 100% / 100% 0% 100% 0%;
+	background: var(--lightgrey);
+	width: 31vmin;
+	height: 20vmin;
+	top: -19vmin;
+}
+
+.jar:after {
+	position: absolute;
+	content: "";
+	border-radius: 25% 75% 0% 100% / 100% 0% 100% 0%;
+	background: var(--lightgrey);
+	width: 31vmin;
+	height: 20vmin;
+	top: -19vmin;
+	left: 29vmin;
+	transform: scaleX(-1);
+}
+
+.jartop {
+	position: absolute;
+	width: 48vmin;
+	height: 20vmin;
+	background: var(--lightgrey);
+	top: -21vmin;
+	left: 6vmin;
+	z-index: 1;
+}
+
+.jarlid {
+	position: absolute;
+	width: 55vmin;
+	height: 6vmin;
+	background: var(--lightestgrey);
+	border-radius: 10vmin;
+	top: -28vmin;
+	left: 2.3vmin;
+	transform-origin: 100% 100%;
+}
+
+.wording {
+	position: absolute;
+	left: 10vmin;
+	font-family: "Gloria Hallelujah", cursive;
+	font-size: 5vmin;
+	color: var(--nearlyblack);
+	user-select: none;
+}
+
+.help {
+	transform: rotate(-15deg);
+	opacity: 1;
+	transition: opacity 2s;
+	transition-delay: 1s;
+}
+
+.thanks {
+	transform: rotate(15deg);
+	opacity: 0;
+	left: 15vmin;
+	top: 10vmin;
+}
+
+.firefly {
+	position: absolute;
+	width: 0vmin;
+	height: 0vmin;
+	left: 10vmin;
+	top: -5vmin;
+	z-index: 1;
+}
+
+.body {
+	position: absolute;
+	width: 12vmin;
+	height: 10vmin;
+	background: var(--red);
+	z-index: 1;
+	left: 14vmin;
+	top: 15vmin;
+	z-index: 1;
+}
+
+.bodybottom {
+	position: absolute;
+	width: 12vmin;
+	height: 8vmin;
+	background: var(--yellow);
+	top: 9vmin;
+	border-radius: 0 0 10vmin 10vmin;
+	z-index: -1;
+}
+
+.wing {
+	position: absolute;
+	background: var(--nearlyblack);
+	border-radius: 50%;
+	width: 25vmin;
+	height: 9.5vmin;
+	left: -5vmin;
+	top: 7vmin;
+	transform: rotate(-45deg);
+	z-index: 3;
+	transform-origin: 100% 50%;
+}
+
+/* right wing */
+.wing-right {
+	position: absolute;
+	content: "";
+	background: var(--nearlyblack);
+	width: 25vmin;
+	height: 9.5vmin;
+	transform: rotate(45deg);
+	left: 20vmin;
+	top: 7vmin;
+	border-radius: 50%;
+	transform-origin: 0% 50%;
+}
+
+.head {
+	position: absolute;
+	width: 8vmin;
+	height: 8vmin;
+	border-radius: 50%;
+	background: var(--nearlyblack);
+	left: 16vmin;
+	top: 4vmin;
+	z-index: 2;
+}
+
+/* right antenna */
+.head:before {
+	position: absolute;
+	content: "";
+	width: 6vmin;
+	height: 6vmin;
+	border: 0.6vmin solid;
+	border-radius: 50%;
+	border-color: var(--nearlyblack) transparent transparent transparent;
+	left: 5vmin;
+	top: -2vmin;
+	transform: rotate(-30deg);
+}
+
+/* left antenna */
+.head:after {
+	position: absolute;
+	content: "";
+	width: 6vmin;
+	height: 6vmin;
+	border: 0.6vmin solid;
+	border-radius: 50%;
+	border-color: var(--nearlyblack) transparent transparent transparent;
+	left: -4vmin;
+	top: -2vmin;
+	transform: rotate(30deg);
+}
+
+.jar:hover .firefly .bodybottom {
+	box-shadow: inset 0vmin 18vmin 0vmin var(--lightyellow),
+		0px 0px 40vmin 20vmin var(--yellow);
+}
+
+.jar:hover .firefly .wing {
+	background: var(--grey);
+}
+
+.jar:hover .firefly .wing-left {
+	animation: flap-left 0.2s 2.4s 10 linear;
+}
+
+.jar:hover .firefly .wing-right {
+	animation: flap-right 0.2s 2.4s 10 linear;
+}
+
+.jar:hover .firefly .wing:after {
+	background: var(--grey);
+}
+
+.jar:hover .firefly .head {
+	background: var(--grey);
+}
+
+.jar:hover .firefly .head:after {
+	border-color: var(--grey) transparent transparent transparent;
+}
+
+.jar:hover .firefly .head:before {
+	border-color: var(--grey) transparent transparent transparent;
+}
+
+.jar:hover {
+	animation: shake 1s 3 linear;
+}
+
+.jar:hover .firefly {
+	animation: shake 0.5s linear infinite;
+}
+
+.jar:hover .jarlid {
+	animation: lid-rise 5s 2s linear;
+}
+
+.jar:hover .firefly {
+	animation: fly 2s 3s linear forwards;
+}
+
+.jar:hover > .help {
+	opacity: 0;
+}
+
+.jar:hover > .thanks {
+	animation: fade-in 5s 1s normal forwards 1;
+}
+
+@keyframes flap-left {
+	0% {
+		transform: rotate(-75deg);
+	}
+	50% {
+		transform: rotate(-15deg);
+	}
+}
+
+@keyframes flap-right {
+	0% {
+		transform: rotate(75deg);
+	}
+	50% {
+		transform: rotate(15deg);
+	}
+}
+
+@keyframes shake {
+	0% {
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+
+	10% {
+		transform: translate(-1px, -2px) rotate(-1deg);
+	}
+
+	20% {
+		transform: translate(-3px, 0px) rotate(1deg);
+	}
+
+	30% {
+		transform: translate(3px, 2px) rotate(0deg);
+	}
+
+	40% {
+		transform: translate(1px, -1px) rotate(1deg);
+	}
+
+	50% {
+		transform: translate(-1px, 2px) rotate(-1deg);
+	}
+
+	60% {
+		transform: translate(-3px, 1px) rotate(0deg);
+	}
+
+	70% {
+		transform: translate(3px, 1px) rotate(-1deg);
+	}
+
+	80% {
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+
+	90% {
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+
+	100% {
+		transform: translate(1px, -2px) rotate(-1deg);
+	}
+}
+
+@keyframes move {
+	0% {
+		transform: translateY(-5vmin);
+	}
+	100% {
+		transform: translateY(0vmin);
+	}
+}
+
+@keyframes lid-rise {
+	0% {
+		transform: rotate(0deg);
+	}
+	20% {
+		transform: rotate(90deg);
+	}
+	100% {
+		transform: rotate(90deg);
+	}
+}
+
+@keyframes fly {
+	0% {
+		transform: translateY(-5vmin);
+	}
+	100% {
+		transform: translateY(-150vmin);
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	66% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
